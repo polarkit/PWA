@@ -1,21 +1,24 @@
 // Nom du cache
-var CACHE_NAME = 'my-site-cache-v1';
+var CACHE_NAME = 'ginkobus-pwa-v1';
 
 // Fichiers à mettre en cache
 var urlsToCache = [
-  '/',
-  '/styles/main.css',
-  '/script/main.js'
+  "icons/icon-192.png",
+  "icons/icon-512.png",
+  "icons/maskable_icon",
+  "index.html",
+  "app.js",
+  "ginkobus.webmanifest",
+  "style.css"
 ];
 
 // Installation du service worker et mise en cache des ressources essentielles
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(function(cache) {
-        console.log('Opened cache');
-        return cache.addAll(urlsToCache);
-      })
+    (async ()=> {
+      const cache = await caches.open(CACHE_NAME);
+      await cache.addAll(urlsToCache);
+    })
   );
 });
 
@@ -52,22 +55,5 @@ self.addEventListener('fetch', function(event) {
           }
         );
       })
-  );
-});
-
-// Mise à jour du service worker et suppression des caches obsolètes
-self.addEventListener('activate', function(event) {
-  var cacheWhitelist = ['my-site-cache-v1'];
-
-  event.waitUntil(
-    caches.keys().then(function(cacheNames) {
-      return Promise.all(
-        cacheNames.map(function(cacheName) {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
   );
 });
