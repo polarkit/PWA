@@ -1,0 +1,30 @@
+{
+  "short_name": "App",
+  "name": "Ma Progressive Web App",
+  "icons": [
+    {
+      "src": "icon/lowres.webp",
+      "sizes": "48x48",
+      "type": "image/webp"
+    },
+    {
+      "src": "icon/hd_hi.ico",
+      "sizes": "72x72 96x96 128x128 256x256",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "icon/hd_hi.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/index.html?source=pwa",
+  "background_color": "#FFFFFF",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#000000",
+  "description": "Une description de ma Progressive Web App.",
+  "lang": "fr-FR",
+  "orientation": "portrait-primary"
+}
